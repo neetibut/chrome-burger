@@ -20,3 +20,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+// Dark Mode Toggle
+const toggleDarkMode = () => {
+  document.documentElement.classList.toggle("dark");
+  const isDark = document.documentElement.classList.contains("dark");
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+};
+
+// Apply saved theme preference on load
+document.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("theme") === "dark") {
+    document.documentElement.classList.add("dark");
+  }
+
+  document
+    .getElementById("dark-mode-toggle")
+    .addEventListener("click", toggleDarkMode);
+});
